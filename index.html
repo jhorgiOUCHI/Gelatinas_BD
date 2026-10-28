@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota 2 Secret Shop - POS Supabase</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuente épica estilo Dota 2 -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Cliente oficial de Supabase vía CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="dota-container">
+        <!-- Header / HUD Shop -->
+        <header class="shop-header">
+            <h1>🗡️ SECRET SHOP - GELATINAS 72ml 🛡️</h1>
+            <div id="connection-status" class="status-badge online">Conectado a la Red</div>
+        </header>
+
+        <!-- Formulario de Venta Principal -->
+        <main class="shop-body">
+            <div class="dota-card">
+                <h2>📜 Registro de Transacción</h2>
+                
+                <!-- Selección del Sabor de Gelatina -->
+                <div class="form-group">
+                    <label>Sabor de Gelatina:</label>
+                    <div class="options-grid" id="sabor-group">
+                        <button type="button" class="dota-tab active" data-id="1">🍓 Frambuesa</button>
+                        <button type="button" class="dota-tab" data-id="2">🍋 Limón</button>
+                    </div>
+                </div>
+
+                <!-- Género del Cliente -->
+                <div class="form-group">
+                    <label>Género del Comprador:</label>
+                    <div class="options-grid" id="genero-group">
+                        <button type="button" class="dota-tab active" data-value="Masculino">Masculino</button>
+                        <button type="button" class="dota-tab" data-value="Femenino">Femenino</button>
+                        <button type="button" class="dota-tab" data-value="Otro">Otro</button>
+                    </div>
+                </div>
+
+                <!-- Rango de Edad -->
+                <div class="form-group">
+                    <label>Rango de Edad:</label>
+                    <div class="options-grid" id="edad-group">
+                        <button type="button" class="dota-tab active" data-value="Niño">Niño</button>
+                        <button type="button" class="dota-tab" data-value="Adolescente">Adolescente</button>
+                        <button type="button" class="dota-tab" data-value="Adulto">Adulto</button>
+                        <button type="button" class="dota-tab" data-value="Adulto Mayor">Adulto Mayor</button>
+                    </div>
+                </div>
+
+                <!-- Cantidad -->
+                <div class="form-group">
+                    <label for="cantidadInput">Cantidad de Gelatinas (2 Bs. c/u):</label>
+                    <div class="quantity-control">
+                        <button type="button" onclick="cambiarCantidad(-1)" class="qty-btn">-</button>
+                        <input type="number" id="cantidadInput" value="1" min="1" oninput="calcularTotal()">
+                        <button type="button" onclick="cambiarCantidad(1)" class="qty-btn">+</button>
+                    </div>
+                </div>
+
+                <!-- Resumen Automático de Pago -->
+                <div class="checkout-box">
+                    <span class="checkout-label">Total a Pagar:</span>
+                    <strong id="totalBsDisplay" class="checkout-amount">2.00 Bs.</strong>
+                </div>
+
+                <!-- Botón de Compra / Registro -->
+                <button onclick="registrarVenta()" class="dota-buy-btn" id="btnComprar">
+                    🪙 ADQUIRIR (COMPRAR)
+                </button>
+            </div>
+
+            <!-- Panel de Estado Offline / Cola de Sincronización -->
+            <div class="offline-panel">
+                <h3>📦 Mochila Offline (Pendientes)</h3>
+                <p>Ventas sin sincronizar: <span id="offline-count">0</span></p>
+                <button onclick="sincronizarDatos()" class="sync-btn">Forzar Sincronización 🔄</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notificación Flotante Estilo Dota -->
+    <div id="dota-toast" class="toast hidden"></div>
+    <script src="app.js"></script>
+</body>
+</html>

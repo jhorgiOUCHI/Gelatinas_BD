@@ -1,0 +1,214 @@
+:root {
+    --bg-dark: #0e1116;
+    --card-bg: #151922;
+    --border-gold: #c29b38;
+    --accent-gold: #e6ca65;
+    --text-light: #e1e1e1;
+    --text-muted: #8a9ba8;
+    --danger: #d9534f;
+    --success: #5cb85c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.dota-container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.shop-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-gold);
+    padding-bottom: 10px;
+}
+
+.shop-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--accent-gold);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.status-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge.online { background-color: var(--success); color: #fff; }
+.status-badge.offline { background-color: var(--danger); color: #fff; }
+
+.dota-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+    background-image: linear-gradient(to bottom, #1b212c, #11151d);
+}
+
+.dota-card h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #2a3447;
+    padding-bottom: 6px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 8px;
+}
+
+.dota-tab {
+    background-color: #1c2533;
+    border: 1px solid #32435f;
+    color: var(--text-light);
+    padding: 8px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dota-tab.active {
+    background-color: var(--border-gold);
+    color: #000;
+    font-weight: bold;
+    border-color: #fff;
+    box-shadow: 0 0 8px var(--accent-gold);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    background-color: #1c2533;
+    border: 1px solid #32435f;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.qty-btn {
+    background: #283548;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.qty-btn:active { background: var(--border-gold); }
+
+.quantity-control input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    outline: none;
+}
+
+.checkout-box {
+    background: #090b0e;
+    border: 1px dashed var(--border-gold);
+    padding: 12px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.checkout-label { font-size: 0.9rem; color: var(--text-muted); }
+.checkout-amount { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--accent-gold); }
+
+.dota-buy-btn {
+    width: 100%;
+    background: linear-gradient(to bottom, #d4af37, #997a21);
+    color: #111;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 1rem;
+    padding: 12px;
+    border: 1px solid #ffd700;
+    border-radius: 4px;
+    cursor: pointer;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.dota-buy-btn:active { transform: scale(0.98); }
+
+.offline-panel {
+    margin-top: 20px;
+    background: var(--card-bg);
+    border: 1px solid #32435f;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.offline-panel h3 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; }
+.offline-panel p { font-size: 0.85rem; margin-bottom: 10px; }
+
+.sync-btn {
+    background: #1c2533;
+    color: var(--accent-gold);
+    border: 1px solid var(--border-gold);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #151922;
+    border: 2px solid var(--accent-gold);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.hidden { opacity: 0; pointer-events: none; }
